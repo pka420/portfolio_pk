@@ -1,6 +1,6 @@
 # A simple portfolio project created in Astro
 
-we are live at: 
+we are live at: https://pka420.github.io/portfolio_pk/
 
 ## 🧞 Commands
 
@@ -15,7 +15,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Template copied over from https://github.com/cobiwave/simplefolio
+
+Template copied over from https://github.com/cobiwave/simplefolio
 ## Changes:
 Added Navigation Bar.
 Project Section look.
