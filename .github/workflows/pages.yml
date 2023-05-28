@@ -35,7 +35,7 @@ name: Deploy Astro to GitHub Pages
           run: npm run build --if-present
 
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0
+          uses: actions/upload-pages-artifact@v1.1
           with:
             path: ./dist
 
@@ -48,7 +48,7 @@ name: Deploy Astro to GitHub Pages
         steps:
           - name: Deploy to GitHub Pages
             id: deployment
-            uses: actions/deploy-pages@v1.0
+            uses: actions/deploy-pages@v1.1
 
 Example workflow for React
 
@@ -89,7 +89,7 @@ Example workflow for React
           run: npm run build --if-present
 
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0
+          uses: actions/upload-pages-artifact@v1.1
           with:
             path: ./build
 
@@ -102,7 +102,7 @@ Example workflow for React
         steps:
           - name: Deploy to GitHub Pages
             id: deployment
-            uses: actions/deploy-pages@v1.0
+            uses: actions/deploy-pages@v1.1
 
 Example template for any static generator of your choice
 
@@ -140,7 +140,7 @@ Example template for any static generator of your choice
           run: “REPLACE WITH YOUR BUILD COMMAND”
 
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0
+          uses: actions/upload-pages-artifact@v1.1
           with:
             path: “REPLACE WITH YOUR BUILD OUTPUT FOLDER”
 
@@ -153,7 +153,7 @@ Example template for any static generator of your choice
         steps:
           - name: Deploy to GitHub Pages
             id: deployment
-            uses: actions/deploy-pages@v1.0
+            uses: actions/deploy-pages@v1.1
 
 Within a few seconds, your Action will start running. It will generate a URL and deploy your static site to GitHub Pages if successful.
 
@@ -287,7 +287,7 @@ name: Deploy Astro to GitHub Pages
           run: npm run build --if-present
 
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0
+          uses: actions/upload-pages-artifact@v1.1
           with:
             path: ./dist
 
@@ -300,7 +300,7 @@ name: Deploy Astro to GitHub Pages
         steps:
           - name: Deploy to GitHub Pages
             id: deployment
-            uses: actions/deploy-pages@v1.0
+            uses: actions/deploy-pages@v1.1
 
 DEV Community — A constructive and inclusive social network for software developers. With you every step of your journey.
 
