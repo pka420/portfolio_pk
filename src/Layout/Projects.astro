@@ -1,0 +1,39 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+---
+
+
+<section id="projects">
+  <div class="container">
+    <div class="project-wrapper">
+      <h2 class="section-title dark-blue-text">Projects</h2>
+
+      <div class="row">
+        <div class="col">
+          <ProjectCard
+            title="CPU simulator"
+            description="A cpu simulator that runs pre-compiled instructions given in the form of text files."
+            link="https://github.com/pka420/CPU-Simulator"
+            image="/cpu_sim.jpg"
+            live_link="/"
+            imageClassName=""
+            imageStyle="height: 200px; width: 200px; right:0;"
+          >
+          </ProjectCard>
+        </div>
+        <div class="col">
+          <ProjectCard
+            title="This portfolio website"
+            description="A simple portflio website"
+            link="https://github.com/pka420/portfolio_pk"
+            image="/project-stock.png"
+            imageClassName=""
+            live_link="/"
+          >
+          </ProjectCard>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

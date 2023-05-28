@@ -1,0 +1,31 @@
+---
+
+import "../sass/style.scss";
+---
+
+<header>
+    <div class="nav" >
+        <div class="nav__nav-header">
+            <div class="nav__nav-name"> {Astro.props.name}</div>
+        </div>
+        
+        <ul class="nav__links">
+            <li class="nav__link">Home</li>
+            <li class="nav__link">About</li>
+            <li class="nav__link">Projects</li>
+            <li class="nav__link">Contact</li>
+        </ul>
+    </div>   
+    
+    <script>
+        // Find all buttons with on the page.
+        const buttons = document.querySelectorAll('li.nav__link');
+        // Handle clicks on each button.
+        buttons.forEach( (button) => {
+            const targetDiv = document.getElementById(button.outerText.toLowerCase());
+            button.addEventListener('click', () => {
+                targetDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+      </script>
+</header>

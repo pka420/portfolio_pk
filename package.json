@@ -9,7 +9,14 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "devDependencies": {
+    "prettier": "^2.8.1"
+  },
   "dependencies": {
-    "astro": "^2.4.1"
+    "astro": "^2.4.1",
+    "sass": "^1.62.1",
+    "scrollreveal": "^4.0.9",
+    "scss": "^0.2.4",
+    "vanilla-tilt": "^1.8.0"
   }
 }

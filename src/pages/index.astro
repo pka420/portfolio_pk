@@ -1,15 +1,38 @@
 ---
+import MainLayout from "../Layout/MainLayout.astro"
+import About from "../Layout/About.astro";
+import Projects from "../Layout/Projects.astro";
+import Contact from "../Layout/Contact.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+
+<MainLayout>
+    <div id="home">
+    <section id="hero" class="jumbotron">
+        <div class="container">
+          <h1 class="hero-title load-hidden">
+            Hi, my name is <span class="text-color-main">Piyush Khurana</span>
+            <br />
+            I'm a Software Developer.
+          </h1>
+          <p class="hero-cta load-hidden">
+            <a rel="noreferrer" class="cta-btn cta-btn--hero" href="/about"
+              >Know more</a
+            >
+          </p>
+        </div>
+      </section>
+    </div>
+
+      <About></About>
+
+      <Projects></Projects>
+
+      <!-- <Skills></Skills>    -->
+
+      <Contact></Contact>
+      
+</MainLayout>
+
+
+
