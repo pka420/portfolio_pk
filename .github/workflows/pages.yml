@@ -1,0 +1,326 @@
+name: Deploy Astro to GitHub Pages
+
+    on:
+     # Trigger the workflow every time you push to the `main` branch
+      push:
+        branches: [ main ]
+      # Allows you to run this workflow manually from the Actions tab on GitHub.
+      workflow_dispatch:
+
+      # Allow this job to clone the repo and create a page deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out your repository using git
+          uses: actions/checkout@v2
+
+        - name: Use Node.js 16
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16'
+            cache: 'npm'
+
+        # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
+        - name: Install dependencies
+          run: npm ci
+
+        # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
+        - name: Build Astro
+          run: npm run build --if-present
+
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v1.0
+          with:
+            path: ./dist
+
+      deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1.0
+
+Example workflow for React
+
+    name: Deploy to React GitHub Pages
+
+    on:
+     # Trigger the workflow every time you push to the `main` branch
+      push:
+        branches: [ main ]
+      # Allows you to run this workflow manually from the Actions tab on GitHub.
+      workflow_dispatch:
+
+      # Allow this job to clone the repo and create a page deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out your repository using git
+          uses: actions/checkout@v2
+
+        - name: Use Node.js 16
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16'
+            cache: 'npm'
+
+        # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
+        - name: Install dependencies
+          run: npm ci
+
+        # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
+        - name: Build React
+          run: npm run build --if-present
+
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v1.0
+          with:
+            path: ./build
+
+      deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1.0
+
+Example template for any static generator of your choice
+
+    name: Deploy to “your frameworks” GitHub Pages
+
+    on:
+     # Trigger the workflow every time you push to the `main` branch
+      push:
+        branches: [ main ]
+      # Allows you to run this workflow manually from the Actions tab on GitHub.
+      workflow_dispatch:
+
+      # Allow this job to clone the repo and create a page deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out your repository using git
+          uses: actions/checkout@v2
+
+        - name: Use “REPLACE WITH THE RUNTIME OF YOUR CHOICE”
+          uses: “REPLACE WITH THE ACTION THAT SETS UP THE RUN TIME OF YOUR CHOICE”
+
+        # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
+        - name: Install dependencies
+          run: “REPLACE WITH COMMANDS TO INSTALL DEPENDENCIES”
+
+        # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
+        - name: Build “YOUR STATIC GENERATOR HERE”
+          run: “REPLACE WITH YOUR BUILD COMMAND”
+
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v1.0
+          with:
+            path: “REPLACE WITH YOUR BUILD OUTPUT FOLDER”
+
+      deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1.0
+
+Within a few seconds, your Action will start running. It will generate a URL and deploy your static site to GitHub Pages if successful.
+
+Image description
+
+Head over to your URL named yourusername.github.io/your_repo_name to check out your live website!
+
+Image description
+Gotchas: handling asset paths
+
+When I first published my site on GitHub Pages, I was confused and surprised that I couldn’t see any images or PDFs even though they were present when I locally hosted the site. This happened because GitHub Pages handles paths differently.
+
+For example, if I have PDF living in this relative path: assets/pdfs/menu-food.pdf, then once hosted on GitHub Pages, update the new path to {“REPOSITORY NAME”}/assets/pdfs/menu-food.pdf
+Example
+
+Here's an example repository I built using this method
+GitHub logo blackgirlbytes / blackgyalbites-astro
+no touch restaurant menu template hosted on GitHub Pages
+blackgyalbites
+Template for No-touch Menus and Host Static Pages Built with Any Framework on GitHub Pages
+
+screenshot of website with 3 buttons that read: food menu, drinks menu, and catering menu. on the right of it is a screenshot of the drinks menu
+Website built with Astro to display restaurant menus when users scan a QR code.
+Powered By GitHub Pages
+
+This is a demonstration to show developers that they can build and host static websites using any framework. See more example frameworks hosted on GitHub Pages:
+
+    HTML and CSS
+    Next.js and Tailwind CSS
+    Astro
+
+Link to live site: https://blackgirlbytes.github.io/blackgyalbites-astro/
+Design and Development
+
+All designs and elements are open source, available for free for anyone to use.
+
+Owned by Rizel Scarlett (@blackgirlbytes)
+
+Designed by The Holistic Technologist
+
+Illustrations by Cuoc Doi Prints
+
+Feel free to fork, copy, tweak, and use for any purpose. This project is completely open source, and under MIT license.
+
+Menu Design Template: Canva
+
+Download Assets & Design Elements: Google Drive
+
+blackgirlbytes logo
+View on GitHub
+Learn more
+
+    Watch this talk delivered by Tommy Byrd on Using GitHub Pages with Actions to deploy Hugo sites in seconds
+    The repository and ReadMe for Deploy Pages
+    GitHub’s changelog announcement
+    Official GitHub Blog Post
+
+
+Watch this awesome YouTube short by Kedasha demonstrating how to use a customized workflow to deploy a static site generator to GitHub Pages!
+
+I'd love your thoughts on the new customized workflows to deploy to GitHub Pages. Comment below! For more content like this, follow GitHub and me on DEV!
+GitHub Pages on Actions (4 Part Series)
+1 Create a No-Touch QR Code Menu with GitHub Pages
+2 How to host your first site for free on GitHub Pages
+3 How to host a Hugo or Next.js site on GitHub Pages
+4 How to deploy an Astro site to GitHub Pages
+Top comments (0)
+pic
+Code of Conduct • Report abuse
+Read next
+sathishskdev profile image
+Part 2: Folder Structure - Building a Solid Foundation
+
+Sathish Kumar N - May 15
+rreymundi profile image
+Setting up TinyMCE in your React app
+
+Raúl R - May 16
+dexter1122 profile image
+Let's build a Google Maps clone with React, Leaflet, and OneSDK
+
+Dexter - May 15
+sathishskdev profile image
+Part 1: Naming Conventions - The Foundation of Clean Code
+
+Sathish Kumar N - May 15
+GitHub
+Let's build from here_
+More from GitHub
+Entenda os tipos de licença open source e saiba qual usar nos seus projetos
+#braziliandevs #githubbrasil #opensource #github
+Unlocking the Power of GitHub: Tips and Tricks
+#github #tutorial #dev #productivity
+Como atrair mais contribuições para seu projeto Open Source
+#braziliandevs #githubbrasil #opensource #github
+
+name: Deploy Astro to GitHub Pages
+
+    on:
+     # Trigger the workflow every time you push to the `main` branch
+      push:
+        branches: [ main ]
+      # Allows you to run this workflow manually from the Actions tab on GitHub.
+      workflow_dispatch:
+
+      # Allow this job to clone the repo and create a page deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out your repository using git
+          uses: actions/checkout@v2
+
+        - name: Use Node.js 16
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16'
+            cache: 'npm'
+
+        # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
+        - name: Install dependencies
+          run: npm ci
+
+        # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
+        - name: Build Astro
+          run: npm run build --if-present
+
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v1.0
+          with:
+            path: ./dist
+
+      deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v1.0
+
+DEV Community — A constructive and inclusive social network for software developers. With you every step of your journey.
+
+    Home
+    Listings
+    Podcasts
+    Videos
+    Tags
+    FAQ
+    Forem Shop
+    Sponsors
+    About
+    Contact
+    Guides
+    Software comparisons
+
+    Code of Conduct
+    Privacy Policy
+    Terms of use
+
+Built on Forem — the open source software that powers DEV and other inclusive communities.
+
+Made with love and Ruby on Rails. DEV Community © 2016 - 2023.
