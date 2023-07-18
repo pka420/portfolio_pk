@@ -1,0 +1,27 @@
+---
+
+---
+
+<div id="home">
+    <section id="hero" class="jumbotron">
+        <div class="container">
+          <h1 class="hero-title load-hidden">
+            Hi, my name is <span class="text-color-main">Piyush Khurana</span>
+            <br />
+            I'm a Software Developer.
+          </h1>
+          <p class="hero-cta load-hidden">
+            <a class="cta-btn cta-btn--hero" id="know"
+              >Know more</a>
+        </p>
+        </div>
+        <script>
+            const button = document.getElementById('know');
+            const targetDiv = document.getElementById("about");
+            button.addEventListener('click', () => {
+                targetDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+        </script>
+    </section>    
+</div>
+

@@ -1,37 +1,24 @@
 ---
 import MainLayout from "../Layout/MainLayout.astro"
 import About from "../Layout/About.astro";
-import Projects from "../Layout/Projects.astro";
+
 import Contact from "../Layout/Contact.astro";
+import Home from "../Layout/Home.astro";
+import Projects from "../Layout/Projects.astro";
+
 ---
 
 
 <MainLayout>
-    <div id="home">
-    <section id="hero" class="jumbotron">
-        <div class="container">
-          <h1 class="hero-title load-hidden">
-            Hi, my name is <span class="text-color-main">Piyush Khurana</span>
-            <br />
-            I'm a Software Developer.
-          </h1>
-          <p class="hero-cta load-hidden">
-            <a rel="noreferrer" class="cta-btn cta-btn--hero" href="https://www.linkedin.com/in/pka42/"
-              >Know more</a
-            >
-          </p>
-        </div>
-      </section>
-    </div>
+
+      <Home></Home>
 
       <About></About>
 
       <Projects></Projects>
 
-      <!-- <Skills></Skills>    -->
-
       <Contact></Contact>
-      
+
 </MainLayout>
 
 
